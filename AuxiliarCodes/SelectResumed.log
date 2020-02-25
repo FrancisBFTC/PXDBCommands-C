@@ -1,0 +1,30 @@
+#include <sstream>
+#include <iostream>
+
+using namespace std;
+
+void selectTable(){
+
+	int size = 1;
+	usuarios select[size];
+	FILE *arquivo;
+
+	if((arquivo = fopen("admin.usuarios.db", "rb")) == NULL){
+		printf("\nErro ao salvar os dados!\n");
+		return;
+	}
+	int i = 0;
+	while(!feof(arquivo)){
+		fread(&select[i], sizeof(usuarios), 1, arquivo);
+		i++;
+	}
+	
+	for(int j = 0; j < i-1; j++){
+		 cout << "id : " << select[j].code << endl;
+		 cout << "nome : " << select[j].nome << endl;
+		 cout << "cpf : " << select[j].cpf << endl;
+		 cout << "idade : " << select[j].idade << endl;
+	}
+	
+	fclose(arquivo);
+}

@@ -1,0 +1,6 @@
+struct Tarefas {
+	int id;
+	char *tarefa;
+	char *data;
+	char *hora;
+};

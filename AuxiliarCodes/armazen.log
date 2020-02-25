@@ -1,0 +1,72 @@
+#include <cstdlib>
+#include <cstdio>
+#include "Structs.h"
+
+Tarefas registrar(){
+	Tarefas reg;
+	reg.id = 1;
+	char *c1 = "estudar";
+	char *c2 = "23/02/2019";
+	char *c3 = "01:01";
+	reg.tarefa = c1;
+	reg.data = c2;
+	reg.hora = c3;
+	return reg;
+}
+
+void exibir(Tarefas reg){
+	printf("\n====================\n");
+	printf("id : %d\n", reg.id);
+	printf("tarefa : %s\n", reg.tarefa);
+	printf("data : %s\n", reg.data);
+	printf("hora : %s", reg.hora);
+	printf("\n====================\n");
+}
+
+void insertTable(){
+
+	int size = 1;
+	Tarefas insert[size];
+	for(int i = 0; i < size; i++)
+		insert[i] = registrar();
+	
+	FILE *arquivo;
+	if((arquivo = fopen("MinhaBase.db", "w")) == NULL){
+	printf("\nErro ao salvar os dados!\n");
+	return;
+	}
+
+	fwrite(insert, sizeof(Tarefas), size, arquivo);
+	fclose(arquivo);
+	printf("\nTabela 'Tarefas' construida na base 'MinhaBase'!\n");
+	printf("Codigo pxdb executado com 0 erros!\n");
+}
+
+void selectTable(){
+
+	int size = 1;
+	Tarefas select[size];
+	FILE *arquivo;
+
+	if((arquivo = fopen("MinhaBase.db", "r")) == NULL){
+		printf("\nErro ao salvar os dados!\n");
+		return;
+	}
+	int i = 0;
+	while(!feof(arquivo)){
+		fread(&select[i], sizeof(Tarefas), 1, arquivo);
+		i++;
+	}
+	
+	for(int j = 0; j < i-1; j++)
+		 exibir(select[j]);
+	
+	fclose(arquivo);
+}
+
+int main(void){
+	 insertTable();
+	 selectTable();
+	 system("PAUSE");
+	 return 0;
+}

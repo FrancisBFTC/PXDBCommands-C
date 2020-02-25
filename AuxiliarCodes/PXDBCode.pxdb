@@ -1,0 +1,36 @@
+/"COMANDOS DE CONSTRUÇÃO"\
+
+CONST DATABASE admin;
+CONST TABLE usuarios IN admin[
+    SIZE 3
+	INT id (AUTO_INCREMENT)
+	CHAR nome
+	INT idade
+];
+CHANGE DATABASE admin TO banco;   			/"PENDENCIAS DE DESENVOLVIMENTO"\
+CHANGE TABLE usuarios IN admin TO tabela;   /"PENDENCIAS DE DESENVOLVIMENTO"\
+REMOVE DATABASE admin;						/"PENDENCIAS DE DESENVOLVIMENTO"\
+REMOVE TABLE usuarios IN admin;				/"PENDENCIAS DE DESENVOLVIMENTO"\
+
+/"COMANDOS DE PESQUISA"\
+
+SEARCH ALL;
+SEARCH ALL DATABASE;
+SEARCH ALL TABLE;
+SEARCH ALL FIELD;
+SEARCH ALL TABLE IN database;
+SEARCH ALL FIELD IN table > database;
+...
+...
+
+/"COMANDOS DE CONSULTA"\
+FIND		/"PENDENCIAS DE DESENVOLVIMENTO"\
+ALT			/"PENDENCIAS DE DESENVOLVIMENTO"\
+DEL			/"PENDENCIAS DE DESENVOLVIMENTO"\
+ADD		
+
+Exemplo Add - ADD [1, matheus, cpf, 23] IN usuarios > admin 
+Exemplo Del - DEL ALL IN usuarios > admin ? id = 1
+Exemplo Alt - ALT nome TO matheus IN usuarios > admin ? id = 1
+Exemplo Find1 - FIND ALL IN usuarios > admin ? id = 1
+Exemplo Find2 - FIND idade IN usuarios > admin ? nome = "joao"
