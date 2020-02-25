@@ -1,0 +1,2 @@
+# PXDBCommands-C
+O PXDB é uma linguagem para banco de dados podendo ser mesclados com a linguagem Plax. PXDB significa "Plax Database" ou "Banco de dados Plax". E existirá o PXDBServer que é o servidor de banco de dados que se comunica com a linguagem Plax. Já o PXDBCommands é um console na qual você escreve comandos pxdb interativos e visualiza toda a sua base de dados pelo console.
